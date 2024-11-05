@@ -6,11 +6,16 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -38,24 +43,28 @@ class MainActivity : ComponentActivity() {
         setContent {
             PortfilioAppV1Theme {
                 val scrollState = rememberScrollState()
-                Column (modifier = Modifier
-                    .verticalScroll(scrollState)
-                    .fillMaxWidth()
-                ) {
-                    FirstBlock(
-                        authorArticle = stringResource(R.string.full_name_creator),
-                        dateArticle = stringResource(R.string.date_of_article),
-                    )
-                    HorizontalDivider(
-                        modifier = Modifier.fillMaxWidth(),
-                        thickness = 1.3F.dp,
-                        color = Color.Black
-                    )
-                    SecondBlock(
-                        slogan = stringResource(R.string.article_name),
-                        articleHalfOne = stringResource(R.string.article_part_one),
-                        articleHalfTwo = stringResource(R.string.article_part_two)
-                    )
+                Box(modifier = Modifier
+                    .fillMaxSize()
+                    .padding(WindowInsets.systemBars.asPaddingValues())) {
+                    Column (modifier = Modifier
+                        .verticalScroll(scrollState)
+                        .fillMaxWidth()
+                    ) {
+                        FirstBlock(
+                            authorArticle = stringResource(R.string.full_name_creator),
+                            dateArticle = stringResource(R.string.date_of_article),
+                        )
+                        HorizontalDivider(
+                            modifier = Modifier.fillMaxWidth(),
+                            thickness = 1.3F.dp,
+                            color = Color.Black
+                        )
+                        SecondBlock(
+                            slogan = stringResource(R.string.article_name),
+                            articleHalfOne = stringResource(R.string.article_part_one),
+                            articleHalfTwo = stringResource(R.string.article_part_two)
+                        )
+                    }
                 }
             }
         }
@@ -68,7 +77,7 @@ fun FirstBlock(authorArticle: String, dateArticle: String, modifier: Modifier = 
     val avatar = painterResource(R.drawable.image)
     Row(horizontalArrangement = Arrangement.Center,
         verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier.padding(all=32.dp)) {
+        modifier = Modifier.padding(top=32.dp, bottom = 32.dp, start=52.dp)) {
         Image(
             painter = avatar,
             contentDescription = null,
@@ -78,7 +87,6 @@ fun FirstBlock(authorArticle: String, dateArticle: String, modifier: Modifier = 
                 .width(96.dp)
                 .height(96.dp)
                 .clip(RoundedCornerShape(128.dp))
-
         )
         Column(modifier = Modifier.padding(start=16.dp)) {
             Text(
@@ -113,13 +121,13 @@ fun SecondBlock(slogan: String, articleHalfOne: String, articleHalfTwo: String, 
         )
         Text(
             text = articleHalfOne,
-            modifier = Modifier.padding(top=16.dp, bottom=24.dp),
+            modifier = Modifier.padding(top=16.dp, bottom=24.dp, start=12.dp, end=12.dp),
             fontSize = 16.sp
         )
         Text(
             text = articleHalfTwo,
             fontSize = 16.sp,
-            modifier = Modifier.padding(bottom=8.dp)
+            modifier = Modifier.padding(bottom=8.dp, start=12.dp, end=12.dp)
         )
     }
 }
@@ -129,24 +137,28 @@ fun SecondBlock(slogan: String, articleHalfOne: String, articleHalfTwo: String, 
 fun PortfolioAppPreview() {
     val scrollState = rememberScrollState()
     PortfilioAppV1Theme {
-        Column (modifier = Modifier
-            .verticalScroll(scrollState)
-            .fillMaxWidth()
-        ) {
-            FirstBlock(
-                authorArticle = stringResource(R.string.full_name_creator),
-                dateArticle = stringResource(R.string.date_of_article),
-            )
-            HorizontalDivider(
-                modifier = Modifier.fillMaxWidth(),
-                thickness = 1.3F.dp,
-                color = Color.Black
-            )
-            SecondBlock(
-                slogan = stringResource(R.string.article_name),
-                articleHalfOne = stringResource(R.string.article_part_one),
-                articleHalfTwo = stringResource(R.string.article_part_two)
-            )
-        }
+        Box(modifier = Modifier
+            .fillMaxSize()
+            .padding(WindowInsets.systemBars.asPaddingValues())) {
+                Column (modifier = Modifier
+                    .verticalScroll(scrollState)
+                    .fillMaxWidth()
+                ) {
+                    FirstBlock(
+                        authorArticle = stringResource(R.string.full_name_creator),
+                        dateArticle = stringResource(R.string.date_of_article),
+                    )
+                    HorizontalDivider(
+                        modifier = Modifier.fillMaxWidth(),
+                        thickness = 1.3F.dp,
+                        color = Color.Black
+                    )
+                    SecondBlock(
+                        slogan = stringResource(R.string.article_name),
+                        articleHalfOne = stringResource(R.string.article_part_one),
+                        articleHalfTwo = stringResource(R.string.article_part_two)
+                    )
+                }
+            }
     }
 }
