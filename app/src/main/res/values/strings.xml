@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PortfilioAppV1</string>
+    <string name="article_part_one">G2 завоевали свой третий трофей в этом году, одержав убедительную победу над Spirit со счетом 3:0 и выиграв BLAST Premier World Final, с легкостью одержав победы над Mirage (13-7), Anubis (13-5) и Dust2 (13-7).</string>
+    <string name="article_part_two">Финал получился абсолютно односторонним: G2 уверенно обыграли Spirit и прочно удерживали лидерство на протяжении всей серии. Snax и компании нужно было прийти в себя после неудачного выступления в прошлый раз на IEM в Рио, и их уверенный выход в финал BLAST World Final стал идеальным тонизирующим средством.</string>
+    <string name="article_name">G2 Win Blast World Final</string>
+    <string name="full_name_creator">Олег Петрович</string>
+    <string name="date_of_article">28.06.2024</string>
+</resources>
